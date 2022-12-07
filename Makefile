@@ -1,2 +1,2 @@
 start:
-	flask --app example run
+	poetry run flask --app hexlet_flask_example/example --debug run
