@@ -2,3 +2,13 @@
     <input type="search" name="name" value="{{ search }}" />
     <input type="submit" value="Search" />
 </form>
+
+<table>
+    {% for user in users %}
+    <tr>
+      <td>
+          {{ user }}
+      </td>
+    </tr>
+    {% endfor %}
+</table>
