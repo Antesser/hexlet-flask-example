@@ -1,19 +1,30 @@
-from flask import Flask
+from flask import Flask, render_template, request
 
-# Это уже нам знакомое callable WSGI-приложение
+
 app = Flask(__name__)
 
+users = ['mike', 'mishel', 'adel', 'keks', 'kamila']
 
-@app.route('/')
+
+@app.route("/")
 def hello_world():
-    return 'Welcome to Flask!'
+    return "Welcome to Flask!"
 
 
-@app.get('/users')
-def users_get():
-    return 'GET /users'
+@app.route("/users")
+def all_users():
+    name = request.args.get('name', default=None)
+    filtered_users = filter(function, iterable)
+    return render_template(
+        'users/index.html',
+        users=filtered_users,
+        search=name,
+    )
 
 
-@app.post('/users')
-def users_post():
-    return 'POST /users'
+@app.route('/users/<id>')
+def users(id):
+    return render_template(
+        'users/show.html',
+        name=id,
+    )
